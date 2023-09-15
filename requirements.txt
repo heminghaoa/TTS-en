@@ -1,8 +1,8 @@
-numpy==1.22.0;python_version<="3.10"
-numpy==1.24.3;python_version>"3.10"
+# numpy==1.22.0;python_version<="3.10"
+# numpy==1.24.3;python_version>"3.10"
 # numpy
 Flask
 openai
-tts
 torch
 torchvision
+tts
