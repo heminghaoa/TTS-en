@@ -38,7 +38,7 @@ def tts1():
     print(tts_instance.list_models())
     tts = TTS(model_name,gpu=False)
     print(tts.languages)
-    wav = tts.tts("This is a test! This is also a test!!", speaker_wav="/opt/voices/SteveJobs.wav", language=tts.languages[0])
+    wav = tts.tts("This is a test! This is also a test!!", speaker_wav="../Voice/SteveJobs.wav", language=tts.languages[0])
     
     # Text to speech to a file
     tts.tts_to_file(text="Hello world!", speaker=tts.speakers[0], language='en', file_path="output.wav")
