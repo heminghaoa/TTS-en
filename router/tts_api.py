@@ -1,5 +1,5 @@
 # router/openai.py
-from flask import Flask, jsonify,request
+from flask import Flask, render_template, render_template_string, request, send_file, jsonify
 from . import tts_app
 import os
 import openai
@@ -7,13 +7,25 @@ import json
 from TTS.api import TTS
 import torch
 
+#!flask/bin/python
+import argparse
+import io
+import sys
+from pathlib import Path
+from threading import Lock
+from typing import Union
+from urllib.parse import parse_qs
+
+from TTS.config import load_config
+from TTS.utils.manage import ModelManager
+from TTS.utils.synthesizer import Synthesizer
 
 
-@tts_app.route("/health", methods=["GET"])
+@tts_app.route("/health", methods=["GET","POST"])
 def health_check1():
     return "OK", 200
 
-@tts_app.route("/", methods=["GET"])
+@tts_app.route("/", methods=["GET","POST"])
 def health_check2():
     return "OK", 200
 
@@ -31,22 +43,7 @@ def tts1():
     # Text to speech to a file
     tts.tts_to_file(text="Hello world!", speaker=tts.speakers[0], language='en', file_path="output.wav")
 
-#!flask/bin/python
-import argparse
-import io
-import json
-import os
-import sys
-from pathlib import Path
-from threading import Lock
-from typing import Union
-from urllib.parse import parse_qs
 
-from flask import Flask, render_template, render_template_string, request, send_file
-
-from TTS.config import load_config
-from TTS.utils.manage import ModelManager
-from TTS.utils.synthesizer import Synthesizer
 
 
 def create_argparser():
