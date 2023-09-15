@@ -9,7 +9,13 @@ import torch
 
 
 
+@tts_app.route("/health", methods=["GET"])
+def health_check1():
+    return "OK", 200
 
+@tts_app.route("/", methods=["GET"])
+def health_check2():
+    return "OK", 200
 
 @tts_app.route("/test/api/tts", methods=["OPTIONS", "POST"])
 def tts1():
@@ -127,14 +133,6 @@ def enable_cors(response):
             "Origin, Accept, Content-Type, Content-Disposition"
     return response
 
-
-@tts_app.route("/health", methods=["GET"])
-def health_check1():
-    return "OK", 200
-
-@tts_app.route("/", methods=["GET"])
-def health_check2():
-    return "OK", 200
 
 
 
