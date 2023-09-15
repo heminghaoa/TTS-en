@@ -1,0 +1,6 @@
+Flask
+
+openai
+tts
+torch
+torchvision
